@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kathy Dionisio — Customer Service Specialist</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: { cream: '#FDFBF7', warm: '#FAF9F6' }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    *, *::before, *::after {
+      cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><ellipse cx='14' cy='18' rx='6.5' ry='5.5' fill='%2338bdf8' opacity='.85'/><circle cx='6.5' cy='11' r='3.2' fill='%2338bdf8' opacity='.85'/><circle cx='11.5' cy='7' r='2.8' fill='%2338bdf8' opacity='.85'/><circle cx='17.5' cy='7' r='2.8' fill='%2338bdf8' opacity='.85'/><circle cx='22.5' cy='11' r='3.2' fill='%2338bdf8' opacity='.85'/></svg>") 14 26, auto;
+    }
+    a, button, input, textarea, [role="button"], label[for] {
+      cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><ellipse cx='14' cy='18' rx='6.5' ry='5.5' fill='%230ea5e9' opacity='.95'/><circle cx='6.5' cy='11' r='3.2' fill='%230ea5e9' opacity='.95'/><circle cx='11.5' cy='7' r='2.8' fill='%230ea5e9' opacity='.95'/><circle cx='17.5' cy='7' r='2.8' fill='%230ea5e9' opacity='.95'/><circle cx='22.5' cy='11' r='3.2' fill='%230ea5e9' opacity='.95'/></svg>") 14 26, pointer;
+    }
+    .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .paw-click { position: fixed; pointer-events: none; z-index: 9999; width: 24px; height: 24px; animation: pawFade 0.6s ease-out forwards; }
+    @keyframes pawFade { 0% { transform: scale(1) translateY(0); opacity: 0.7; } 100% { transform: scale(0.5) translateY(-10px); opacity: 0; } }
+    .btn-loading .btn-text { opacity: 0; }
+    .btn-loading .btn-spinner { display: block; }
+    .btn-spinner { display: none; position: absolute; inset: 0; margin: auto; width: 20px; height: 20px; border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.6s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body class="bg-white text-slate-700 font-sans antialiased">
+
+  <nav class="fixed w-full bg-white/85 backdrop-blur-md z-50 border-b border-slate-100/80">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#hero" class="font-semibold tracking-tight text-xl text-slate-800 hover:text-sky-500 transition-colors duration-200">KD.</a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#about" class="text-sm text-slate-400 hover:text-sky-500 transition-colors duration-200">About</a>
+        <a href="#experience" class="text-sm text-slate-400 hover:text-sky-500 transition-colors duration-200">Experience</a>
+        <a href="#skills" class="text-sm text-slate-400 hover:text-sky-500 transition-colors duration-200">Skills</a>
+        <a href="#certifications" class="text-sm text-slate-400 hover:text-sky-500 transition-colors duration-200">Certifications</a>
+        <a href="#contact" class="text-sm font-medium bg-sky-500 text-white px-5 py-2 rounded-full hover:bg-sky-600 transition-colors duration-200 shadow-sm shadow-sky-200">Say Hello</a>
+      </div>
+      <button id="menuToggle" class="md:hidden p-2 text-slate-400 hover:text-slate-700 transition-colors duration-200" aria-label="Toggle menu">
+        <i data-lucide="menu" class="w-5 h-5"></i>
+      </button>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden bg-white/95 backdrop-blur-md border-b border-slate-100 px-6 pb-4">
+      <a href="#about" class="block py-3 text-sm text-slate-500 hover:text-sky-500 transition-colors duration-200 border-b border-slate-50">About</a>
+      <a href="#experience" class="block py-3 text-sm text-slate-500 hover:text-sky-500 transition-colors duration-200 border-b border-slate-50">Experience</a>
+      <a href="#skills" class="block py-3 text-sm text-slate-500 hover:text-sky-500 transition-colors duration-200 border-b border-slate-50">Skills</a>
+      <a href="#certifications" class="block py-3 text-sm text-slate-500 hover:text-sky-500 transition-colors duration-200 border-b border-slate-50">Certifications</a>
+      <a href="#contact" class="block py-3 text-sm font-medium text-sky-500">Say Hello</a>
+    </div>
+  </nav>
+
+  <section id="hero" class="pt-32 pb-24 px-6">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-14 items-center">
+      <div class="fade-up">
+        <p class="text-xs font-semibold uppercase tracking-widest text-sky-400 mb-4">Customer Service Specialist</p>
+        <h1 class="text-4xl md:text-5xl font-semibold leading-[1.1] mb-6 text-slate-800 tracking-tight">
+          Hi, I'm Kathy.<br/><span class="text-sky-400">I help people feel heard.</span>
+        </h1>
+        <p class="text-base md:text-lg text-slate-400 mb-8 leading-relaxed max-w-md">9 years of caring, multi-channel support across wellness, real estate, ride-sharing, and e-commerce. Currently open to remote opportunities.</p>
+        <div class="flex flex-col sm:flex-row gap-3 mb-10">
+          <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-sky-500 text-white text-sm font-medium px-6 py-3 rounded-full hover:bg-sky-600 transition-colors duration-200 shadow-sm shadow-sky-200"><i data-lucide="send" class="w-4 h-4"></i> Let's Connect</a>
+          <a href="#experience" class="inline-flex items-center justify-center gap-2 bg-warm text-slate-600 text-sm font-medium px-6 py-3 rounded-full border border-slate-200 hover:bg-slate-50 hover:border-slate-300 transition-all duration-200"><i data-lucide="briefcase" class="w-4 h-4"></i> My Experience</a>
+        </div>
+        <div class="flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-400">
+          <span class="flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-sky-300"></i> Quezon City, PH</span>
+          <span class="flex items-center gap-1.5"><i data-lucide="mail" class="w-3.5 h-3.5 text-sky-300"></i> kathyleen.dionisio@gmail.com</span>
+          <span class="flex items-center gap-1.5"><i data-lucide="phone" class="w-3.5 h-3.5 text-sky-300"></i> +63 956 728 6017</span>
+        </div>
+      </div>
+      <div class="fade-up flex justify-center md:justify-end" style="transition-delay: 0.15s;">
+        <div class="relative">
+          <div class="absolute -inset-6 bg-gradient-to-br from-sky-100/60 to-sky-50/30 rounded-[2rem] blur-2xl"></div>
+          <div class="relative w-72 h-80 md:w-80 md:h-96 rounded-2xl overflow-hidden border border-slate-100 shadow-xl shadow-slate-200/50">
+            <img src="https://z-cdn-media.chatglm.cn/files/87744978-9179-42ec-97fe-ad28e433b9b6.jpeg?auth_key=1879010681-0f25ef87a3b049d2be187dc5f33c75f3-0-464fb37ca704e1d837e0968b21e3d2e4" alt="Kathy Dionisio" class="w-full h-full object-cover object-top" />
+          </div>
+          <div class="absolute -bottom-3 -left-3 w-20 h-20 bg-sky-50 rounded-xl border border-sky-100 -z-10"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="py-20 bg-warm px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14 fade-up">
+        <p class="text-xs font-semibold uppercase tracking-widest text-sky-400 mb-3">What I Bring</p>
+        <h2 class="text-3xl md:text-4xl font-semibold text-slate-800 tracking-tight">Why Work With Me</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="fade-up bg-white p-8 rounded-2xl border border-slate-100 hover:shadow-lg hover:shadow-slate-100/50 transition-all duration-300">
+          <div class="w-11 h-11 bg-sky-50 rounded-xl flex items-center justify-center mb-5"><i data-lucide="heart-handshake" class="w-5 h-5 text-sky-400"></i></div>
+          <h3 class="font-semibold text-lg mb-2 text-slate-800">Empathy-First Support</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">9 years of making customers feel genuinely cared for — across email, phone, and chat, in high-volume settings.</p>
+        </div>
+        <div class="fade-up bg-white p-8 rounded-2xl border border-slate-100 hover:shadow-lg hover:shadow-slate-100/50 transition-all duration-300" style="transition-delay: 0.08s;">
+          <div class="w-11 h-11 bg-sky-50 rounded-xl flex items-center justify-center mb-5"><i data-lucide="shield-check" class="w-5 h-5 text-sky-400"></i></div>
+          <h3 class="font-semibold text-lg mb-2 text-slate-800">Reliable Consistency</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">Known for a strong work ethic and attention to detail — the kind of teammate you never have to worry about.</p>
+        </div>
+        <div class="fade-up bg-white p-8 rounded-2xl border border-slate-100 hover:shadow-lg hover:shadow-slate-100/50 transition-all duration-300" style="transition-delay: 0.16s;">
+          <div class="w-11 h-11 bg-sky-50 rounded-xl flex items-center justify-center mb-5"><i data-lucide="puzzle" class="w-5 h-5 text-sky-400"></i></div>
+          <h3 class="font-semibold text-lg mb-2 text-slate-800">Adaptable Across Industries</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">Wellness, real estate, ride-sharing, e-commerce — I learn fast and deliver quality from day one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="py-20 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14 fade-up">
+        <p class="text-xs font-semibold uppercase tracking-widest text-sky-400 mb-3">Career Journey</p>
+        <h2 class="text-3xl md:text-4xl font-semibold text-slate-800 tracking-tight">Experience</h2>
+      </div>
+      <div class="max-w-3xl mx-auto space-y-0">
+        <div class="fade-up relative pl-8 pb-12 border-l-2 border-sky-200">
+          <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-sky-400 border-4 border-white shadow-sm"></div>
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1.5"><h3 class="font-semibold text-slate-800">Email Support Specialist</h3><span class="text-xs font-medium text-white bg-sky-400 px-3 py-1 rounded-full w-fit mt-1.5 sm:mt-0">Mar 2025 – Nov 2025</span></div>
+          <p class="text-sm font-medium text-sky-500/80 mb-4">BruntWork · Wellness Industry · Remote</p>
+          <ul class="text-sm text-slate-400 space-y-2 leading-relaxed">
+            <li class="flex items-start gap-2.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-sky-300 mt-0.5 shrink-0"></i>Handled a high volume of customer email inquiries daily through Zendesk with professionalism and empathy.</li>
+            <li class="flex items-start gap-2.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-sky-300 mt-0.5 shrink-0"></i>Documented customer concerns and resolutions to ensure accuracy and continuity of support.</li>
+            <li class="flex items-start gap-2.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-sky-300 mt-0.5 shrink-0"></i>Identified recurring issues and supported workflow improvements to enhance customer experience.</li>
+          </ul>
+        </div>
+        <div class="fade-up relative pl-8 pb-12 border-l-2 border-slate-200">
+          <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-slate-300 border-4 border-white shadow-sm"></div>
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1.5"><h3 class="font-semibold text-slate-800">Client Service Advisor</h3><span class="text-xs font-medium text-slate-500 bg-slate-100 px-3 py-1 rounded-full w-fit mt-1.5 sm:mt-0">Jul 2022 – Mar 2024</span></div>
+          <p class="text-sm font-medium text-slate-400 mb-4">Rocketstation · Real Estate Industry · Remote</p>
+          <ul class="text-sm text-slate-400 space-y-2 leading-relaxed">
+            <li class="flex items-start gap-2.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-sky-300 mt-0.5 shrink-0"></i>Provided dependable multi-channel support (email and phone) to tenants and property owners regarding accounts, payments, and maintenance requests.</li>
+            <li class="flex items-start gap-2.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-sky-300 mt-0.5 shrink-0"></i>Took ownership of customer concerns by coordinating with vendors and internal teams until resolution.</li>
+            <li class="flex items-start gap-2.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-sky-300 mt-0.5 shrink-0"></i>Maintained clear, respectful communication while handling routine and escalated inquiries.</li>
+          </ul>
+        </div>
+        <div class="fade-up relative pl-8 pb-12 border-l-2 border-slate-200">
+          <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-slate-300 border-4 border-white shadow-sm"></div>
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1.5"><h3 class="font-semibold text-slate-800">Customer Service Representative</h3><span class="text-xs font-medium text-slate-500 bg-slate-100 px-3 py-1 rounded-full w-fit mt-1.5 sm:mt-0">Mar 2018 – Jun 2022</span></div>
+          <p class="text-sm font-medium text-slate-400 mb-4">TaskUs · Ride-Sharing Industry · Quezon City</p>
+          <ul class="text-sm text-slate-400 space-y-2 leading-relaxed">
+            <li class="flex items-start gap-2.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-sky-300 mt-0.5 shrink-0"></i>Provided multi-channel support (email, phone, and chat) across general support, billing, cancellations, and rebookings.</li>
+            <li class="flex items-start gap-2.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-sky-300 mt-0.5 shrink-0"></i>Cross-trained to support VIP hosts, handling sensitive and time-critical inquiries.</li>
+            <li class="flex items-start gap-2.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-sky-300 mt-0.5 shrink-0"></i>Processed gas, toll, and cleaning reimbursements ensuring accuracy, policy compliance, and proper documentation.</li>
+          </ul>
+        </div>
+        <div class="fade-up relative pl-8 border-l-2 border-slate-200">
+          <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-slate-300 border-4 border-white shadow-sm"></div>
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1.5"><h3 class="font-semibold text-slate-800">Customer Service Representative</h3><span class="text-xs font-medium text-slate-500 bg-slate-100 px-3 py-1 rounded-full w-fit mt-1.5 sm:mt-0">Jun 2016 – Mar 2018</span></div>
+          <p class="text-sm font-medium text-slate-400 mb-4">Concentrix · E-Commerce Industry · Quezon City</p>
+          <ul class="text-sm text-slate-400 space-y-2 leading-relaxed">
+            <li class="flex items-start gap-2.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-sky-300 mt-0.5 shrink-0"></i>Assisted customers via email and phone with orders, refunds, and account concerns in a fast-paced environment.</li>
+            <li class="flex items-start gap-2.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-sky-300 mt-0.5 shrink-0"></i>Provided Tier 1 technical support while adhering to quality and compliance standards.</li>
+            <li class="flex items-start gap-2.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-sky-300 mt-0.5 shrink-0"></i>Handled escalated calls during peak seasons with a focus on de-escalation and resolution.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="py-20 bg-warm px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14 fade-up">
+        <p class="text-xs font-semibold uppercase tracking-widest text-sky-400 mb-3">What I Work With</p>
+        <h2 class="text-3xl md:text-4xl font-semibold text-slate-800 tracking-tight">Skills & Tools</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-10 max-w-3xl mx-auto">
+        <div class="fade-up">
+          <h3 class="font-semibold text-slate-800 mb-5 flex items-center gap-2"><i data-lucide="monitor" class="w-4 h-4 text-sky-400"></i> Tools & Platforms</h3>
+          <div class="flex flex-wrap gap-2.5">
+            <span class="text-sm bg-white text-slate-600 px-4 py-2.5 rounded-xl border border-slate-150 hover:border-sky-200 hover:text-sky-600 transition-all duration-200">Zendesk</span>
+            <span class="text-sm bg-white text-slate-600 px-4 py-2.5 rounded-xl border border-slate-150 hover:border-sky-200 hover:text-sky-600 transition-all duration-200">Salesforce</span>
+            <span class="text-sm bg-white text-slate-600 px-4 py-2.5 rounded-xl border border-slate-150 hover:border-sky-200 hover:text-sky-600 transition-all duration-200">Canva</span>
+            <span class="text-sm bg-white text-slate-600 px-4 py-2.5 rounded-xl border border-slate-150 hover:border-sky-200 hover:text-sky-600 transition-all duration-200">CRM Systems</span>
+            <span class="text-sm bg-white text-slate-600 px-4 py-2.5 rounded-xl border border-slate-150 hover:border-sky-200 hover:text-sky-600 transition-all duration-200">Google Workspace</span>
+            <span class="text-sm bg-white text-slate-600 px-4 py-2.5 rounded-xl border border-slate-150 hover:border-sky-200 hover:text-sky-600 transition-all duration-200">Microsoft Office</span>
+          </div>
+        </div>
+        <div class="fade-up" style="transition-delay: 0.08s;">
+          <h3 class="font-semibold text-slate-800 mb-5 flex items-center gap-2"><i data-lucide="sparkles" class="w-4 h-4 text-sky-400"></i> Core Competencies</h3>
+          <div class="flex flex-wrap gap-2.5">
+            <span class="text-sm bg-sky-50 text-sky-600 px-4 py-2.5 rounded-xl border border-sky-100">Email Support</span>
+            <span class="text-sm bg-sky-50 text-sky-600 px-4 py-2.5 rounded-xl border border-sky-100">Phone Support</span>
+            <span class="text-sm bg-sky-50 text-sky-600 px-4 py-2.5 rounded-xl border border-sky-100">Live Chat</span>
+            <span class="text-sm bg-sky-50 text-sky-600 px-4 py-2.5 rounded-xl border border-sky-100">Escalation Handling</span>
+            <span class="text-sm bg-sky-50 text-sky-600 px-4 py-2.5 rounded-xl border border-sky-100">De-escalation</span>
+            <span class="text-sm bg-sky-50 text-sky-600 px-4 py-2.5 rounded-xl border border-sky-100">Cross-Functional Support</span>
+            <span class="text-sm bg-sky-50 text-sky-600 px-4 py-2.5 rounded-xl border border-sky-100">Attention to Detail</span>
+            <span class="text-sm bg-sky-50 text-sky-600 px-4 py-2.5 rounded-xl border border-sky-100">Time Management</span>
+            <span class="text-sm bg-sky-50 text-sky-600 px-4 py-2.5 rounded-xl border border-sky-100">Strong Work Ethic</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications" class="py-20 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14 fade-up">
+        <p class="text-xs font-semibold uppercase tracking-widest text-sky-400 mb-3">Learning & Growth</p>
+        <h2 class="text-3xl md:text-4xl font-semibold text-slate-800 tracking-tight">Certifications</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+        <div class="fade-up">
+          <h3 class="font-semibold text-slate-800 mb-5 flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-sky-400"></i> Certificates</h3>
+          <div class="space-y-3">
+            <div class="flex items-start gap-3 bg-warm rounded-xl px-4 py-3.5 border border-slate-100"><div class="w-8 h-8 bg-sky-50 rounded-lg flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="palette" class="w-3.5 h-3.5 text-sky-400"></i></div><div><p class="text-sm font-medium text-slate-700">Marketing with Canva</p><p class="text-xs text-slate-400 mt-0.5">Canva · Oct 2025</p></div></div>
+            <div class="flex items-start gap-3 bg-warm rounded-xl px-4 py-3.5 border border-slate-100"><div class="w-8 h-8 bg-sky-50 rounded-lg flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="palette" class="w-3.5 h-3.5 text-sky-400"></i></div><div><p class="text-sm font-medium text-slate-700">Canva Essentials</p><p class="text-xs text-slate-400 mt-0.5">Canva · Feb 2025</p></div></div>
+            <div class="flex items-start gap-3 bg-warm rounded-xl px-4 py-3.5 border border-slate-100"><div class="w-8 h-8 bg-sky-50 rounded-lg flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="palette" class="w-3.5 h-3.5 text-sky-400"></i></div><div><p class="text-sm font-medium text-slate-700">Graphic Design Essentials</p><p class="text-xs text-slate-400 mt-0.5">Canva · Feb 2025</p></div></div>
+            <div class="flex items-start gap-3 bg-warm rounded-xl px-4 py-3.5 border border-slate-100"><div class="w-8 h-8 bg-sky-50 rounded-lg flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="search" class="w-3.5 h-3.5 text-sky-400"></i></div><div><p class="text-sm font-medium text-slate-700">Foundations of Digital Marketing & E-commerce</p><p class="text-xs text-slate-400 mt-0.5">Google · 2024</p></div></div>
+            <div class="flex items-start gap-3 bg-warm rounded-xl px-4 py-3.5 border border-slate-100"><div class="w-8 h-8 bg-sky-50 rounded-lg flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="share-2" class="w-3.5 h-3.5 text-sky-400"></i></div><div><p class="text-sm font-medium text-slate-700">Facebook Ads Autopilot</p><p class="text-xs text-slate-400 mt-0.5">Kurso.ph · 2024</p></div></div>
+            <div class="flex items-start gap-3 bg-warm rounded-xl px-4 py-3.5 border border-slate-100"><div class="w-8 h-8 bg-sky-50 rounded-lg flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="megaphone" class="w-3.5 h-3.5 text-sky-400"></i></div><div><p class="text-sm font-medium text-slate-700">Social Media Marketing</p><p class="text-xs text-slate-400 mt-0.5">Kurso.ph · 2022</p></div></div>
+            <div class="flex items-start gap-3 bg-warm rounded-xl px-4 py-3.5 border border-slate-100"><div class="w-8 h-8 bg-sky-50 rounded-lg flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="palette" class="w-3.5 h-3.5 text-sky-400"></i></div><div><p class="text-sm font-medium text-slate-700">Graphic Design with Canva</p><p class="text-xs text-slate-400 mt-0.5">Kurso.ph · 2022</p></div></div>
+            <div class="flex items-start gap-3 bg-warm rounded-xl px-4 py-3.5 border border-slate-100"><div class="w-8 h-8 bg-sky-50 rounded-lg flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="globe" class="w-3.5 h-3.5 text-sky-400"></i></div><div><p class="text-sm font-medium text-slate-700">WordPress and Marketing</p><p class="text-xs text-slate-400 mt-0.5">Kurso.ph · 2022</p></div></div>
+            <div class="flex items-start gap-3 bg-warm rounded-xl px-4 py-3.5 border border-slate-100"><div class="w-8 h-8 bg-sky-50 rounded-lg flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="pen-tool" class="w-3.5 h-3.5 text-sky-400"></i></div><div><p class="text-sm font-medium text-slate-700">Copywriting</p><p class="text-xs text-slate-400 mt-0.5">Kurso.ph · 2022</p></div></div>
+          </div>
+        </div>
+        <div class="fade-up" style="transition-delay: 0.08s;">
+          <h3 class="font-semibold text-slate-800 mb-5 flex items-center gap-2"><i data-lucide="trophy" class="w-4 h-4 text-sky-400"></i> Awards & Recognitions</h3>
+          <div class="space-y-3">
+            <div class="flex items-start gap-3 bg-gradient-to-r from-sky-50 to-white rounded-xl px-4 py-3.5 border border-sky-100"><div class="w-8 h-8 bg-sky-100 rounded-lg flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="star" class="w-3.5 h-3.5 text-sky-500"></i></div><div><p class="text-sm font-medium text-slate-700">Top Performer</p><p class="text-xs text-sky-400 mt-0.5">Rocketstation · 2023</p></div></div>
+            <div class="flex items-start gap-3 bg-gradient-to-r from-sky-50 to-white rounded-xl px-4 py-3.5 border border-sky-100"><div class="w-8 h-8 bg-sky-100 rounded-lg flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="star" class="w-3.5 h-3.5 text-sky-500"></i></div><div><p class="text-sm font-medium text-slate-700">Best in Quality Assurance</p><p class="text-xs text-sky-400 mt-0.5">Rocketstation · 2023</p></div></div>
+            <div class="flex items-start gap-3 bg-gradient-to-r from-sky-50 to-white rounded-xl px-4 py-3.5 border border-sky-100"><div class="w-8 h-8 bg-sky-100 rounded-lg flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="heart" class="w-3.5 h-3.5 text-sky-500"></i></div><div><p class="text-sm font-medium text-slate-700">100% CSAT</p><p class="text-xs text-sky-400 mt-0.5">TaskUs · Multiple years</p></div></div>
+            <div class="flex items-start gap-3 bg-gradient-to-r from-sky-50 to-white rounded-xl px-4 py-3.5 border border-sky-100"><div class="w-8 h-8 bg-sky-100 rounded-lg flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="star" class="w-3.5 h-3.5 text-sky-500"></i></div><div><p class="text-sm font-medium text-slate-700">Best in Quality Assurance</p><p class="text-xs text-sky-400 mt-0.5">TaskUs · Multiple years</p></div></div>
+            <div class="flex items-start gap-3 bg-gradient-to-r from-sky-50 to-white rounded-xl px-4 py-3.5 border border-sky-100"><div class="w-8 h-8 bg-sky-100 rounded-lg flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="star" class="w-3.5 h-3.5 text-sky-500"></i></div><div><p class="text-sm font-medium text-slate-700">Top Performer</p><p class="text-xs text-sky-400 mt-0.5">Concentrix · 2017</p></div></div>
+          </div>
+          <div class="mt-6 bg-gradient-to-br from-sky-500 to-sky-600 rounded-2xl p-6 text-white">
+            <div class="flex items-center gap-3 mb-3"><i data-lucide="trending-up" class="w-5 h-5 text-sky-200"></i><p class="text-xs font-semibold uppercase tracking-wider text-sky-200">Track Record</p></div>
+            <p class="text-2xl font-bold">5 Recognitions</p>
+            <p class="text-sm text-sky-100 mt-1">Across 3 companies — consistently exceeding quality and performance targets.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-20 bg-warm px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14 fade-up">
+        <p class="text-xs font-semibold uppercase tracking-widest text-sky-400 mb-3">Currently Open to Work</p>
+        <h2 class="text-3xl md:text-4xl font-semibold text-slate-800 tracking-tight">Let's Talk</h2>
+        <p class="text-slate-400 mt-3 max-w-md mx-auto text-sm leading-relaxed">I'm looking for a remote customer support role where I can make a real difference. Reach out and I'll get back to you within 24 hours.</p>
+      </div>
+      <div class="grid md:grid-cols-5 gap-12 max-w-3xl mx-auto">
+        <div class="md:col-span-2 fade-up space-y-6">
+          <div class="flex items-start gap-3.5"><div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center shrink-0 mt-0.5 border border-slate-100 shadow-sm"><i data-lucide="mail" class="w-4 h-4 text-sky-400"></i></div><div><p class="text-[11px] font-medium text-slate-300 uppercase tracking-wider mb-0.5">Email</p><p class="text-sm text-slate-600 break-all">kathyleen.dionisio@gmail.com</p></div></div>
+          <div class="flex items-start gap-3.5"><div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center shrink-0 mt-0.5 border border-slate-100 shadow-sm"><i data-lucide="phone" class="w-4 h-4 text-sky-400"></i></div><div><p class="text-[11px] font-medium text-slate-300 uppercase tracking-wider mb-0.5">Phone</p><p class="text-sm text-slate-600">+63 956 728 6017</p></div></div>
+          <div class="flex items-start gap-3.5"><div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center shrink-0 mt-0.5 border border-slate-100 shadow-sm"><i data-lucide="map-pin" class="w-4 h-4 text-sky-400"></i></div><div><p class="text-[11px] font-medium text-slate-300 uppercase tracking-wider mb-0.5">Location</p><p class="text-sm text-slate-600">Quezon City, Philippines</p></div></div>
+          <div class="pt-2"><p class="text-[11px] font-medium text-slate-300 uppercase tracking-wider mb-2">Availability</p><div class="flex items-center gap-2"><span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span><span class="text-sm text-green-600 font-medium">Open to remote work</span></div></div>
+        </div>
+        <form id="contactForm" class="md:col-span-3 fade-up space-y-4" style="transition-delay: 0.08s;">
+          <div>
+            <label class="block text-[11px] font-medium text-slate-400 uppercase tracking-wider mb-1.5" for="name">Your Name</label>
+            <input id="name" name="from_name" type="text" required placeholder="Jane Doe" class="w-full bg-white border border-slate-200 rounded-xl text-sm px-4 py-3 text-slate-700 placeholder:text-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-200 focus:border-sky-400 transition-all duration-200" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-medium text-slate-400 uppercase tracking-wider mb-1.5" for="email">Your Email</label>
+            <input id="email" name="from_email" type="email" required placeholder="jane@company.com" class="w-full bg-white border border-slate-200 rounded-xl text-sm px-4 py-3 text-slate-700 placeholder:text-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-200 focus:border-sky-400 transition-all duration-200" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-medium text-slate-400 uppercase tracking-wider mb-1.5" for="message">Message</label>
+            <textarea id="message" name="message" rows="4" required placeholder="Tell me about the role or opportunity..." class="w-full bg-white border border-slate-200 rounded-xl text-sm px-4 py-3 text-slate-700 placeholder:text-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-200 focus:border-sky-400 transition-all duration-200 resize-none"></textarea>
+          </div>
+          <button id="submitBtn" type="submit" class="relative w-full bg-sky-500 text-white text-sm font-medium py-3 rounded-full hover:bg-sky-600 transition-colors duration-200 shadow-sm shadow-sky-200 flex items-center justify-center gap-2">
+            <span class="btn-text flex items-center gap-2"><i data-lucide="send" class="w-4 h-4"></i> Send Message</span>
+            <span class="btn-spinner"></span>
+          </button>
+          <div id="formSuccess" class="hidden text-center text-sm text-green-600 bg-green-50 border border-green-100 rounded-xl py-3 px-4">
+            <span class="flex items-center justify-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4"></i> Message sent! I'll reply soon.</span>
+          </div>
+          <div id="formError" class="hidden text-center text-sm text-red-500 bg-red-50 border border-red-100 rounded-xl py-3 px-4">
+            <span class="flex items-center justify-center gap-2"><i data-lucide="alert-circle" class="w-4 h-4"></i> Something went wrong. Please try again or email me directly.</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-slate-100 py-8 px-6 bg-white">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-xs text-slate-300">&copy; 2025 Kathy Dionisio</p>
+      <p class="text-xs text-slate-400">Website created by <span class="font-medium text-sky-500">Belle Zerrudo</span> 🐾</p>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    // Menu
+    var menuToggle = document.getElementById('menuToggle');
+    var mobileMenu = document.getElementById('mobileMenu');
+    menuToggle.addEventListener('click', function() { mobileMenu.classList.toggle('hidden'); });
+    mobileMenu.querySelectorAll('a').forEach(function(link) { link.addEventListener('click', function() { mobileMenu.classList.add('hidden'); }); });
+
+    // Scroll animations
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
+
+    // Contact form — uses EmailJS REST API directly, NO library needed
+    var contactForm = document.getElementById('contactForm');
+    var submitBtn   = document.getElementById('submitBtn');
+    var formSuccess = document.getElementById('formSuccess');
+    var formError   = document.getElementById('formError');
+
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      formSuccess.classList.add('hidden');
+      formError.classList.add('hidden');
+      submitBtn.classList.add('btn-loading');
+      submitBtn.disabled = true;
+
+      var data = {
+        service_id: 'service_2ys6e2j',
+        template_id: 'template_70a525t',
+        user_id: 'xyOfTjeLFLmnGYeQX',
+        template_params: {
+          from_name: contactForm.from_name.value,
+          from_email: contactForm.from_email.value,
+          message: contactForm.message.value,
+          to_name: 'Kathy'
+        }
+      };
+
+      fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(function(response) { return response.json(); })
+      .then(function(result) {
+        console.log('EmailJS result:', result);
+        if (result.status === 200) {
+          formSuccess.classList.remove('hidden');
+          contactForm.reset();
+          lucide.createIcons();
+          setTimeout(function() { formSuccess.classList.add('hidden'); }, 6000);
+        } else {
+          throw new Error(result.message || 'Failed to send');
+        }
+      })
+      .catch(function(err) {
+        console.error('Send error:', err);
+        formError.classList.remove('hidden');
+        lucide.createIcons();
+        setTimeout(function() { formError.classList.add('hidden'); }, 6000);
+      })
+      .finally(function() {
+        submitBtn.classList.remove('btn-loading');
+        submitBtn.disabled = false;
+      });
+    });
+
+    // Active nav
+    var sections = document.querySelectorAll('section[id]');
+    var navLinks = document.querySelectorAll('nav a[href^="#"]');
+    window.addEventListener('scroll', function() {
+      var current = '';
+      sections.forEach(function(section) { if (window.scrollY >= section.offsetTop - 120) current = section.getAttribute('id'); });
+      navLinks.forEach(function(link) {
+        link.classList.remove('!text-sky-500', '!font-medium');
+        if (!link.classList.contains('bg-sky-500') && link.getAttribute('href') === '#' + current) link.classList.add('!text-sky-500', '!font-medium');
+      });
+    });
+
+    // Paw click
+    var pawSVG = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><ellipse cx="12" cy="15.5" rx="5.5" ry="4.5" fill="#38bdf8" opacity=".6"/><circle cx="5.5" cy="9.5" r="2.7" fill="#38bdf8" opacity=".6"/><circle cx="10" cy="6" r="2.3" fill="#38bdf8" opacity=".6"/><circle cx="15" cy="6" r="2.3" fill="#38bdf8" opacity=".6"/><circle cx="19" cy="9.5" r="2.7" fill="#38bdf8" opacity=".6"/></svg>';
+    document.addEventListener('click', function(e) {
+      var paw = document.createElement('img');
+      paw.src = 'data:image/svg+xml,' + pawSVG;
+      paw.className = 'paw-click';
+      paw.style.left = (e.clientX - 12) + 'px';
+      paw.style.top = (e.clientY - 12) + 'px';
+      document.body.appendChild(paw);
+      setTimeout(function() { paw.remove(); }, 600);
+    });
+  </script>
+
+</body>
+</html>
