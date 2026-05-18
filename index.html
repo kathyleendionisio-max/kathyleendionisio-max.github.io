@@ -320,23 +320,31 @@
       submitBtn.classList.add('btn-loading');
       submitBtn.disabled = true;
 
-      var data = {
-        service_id: 'service_2ys6e2j',
-        template_id: 'template_70a525t',
-        user_id: 'xyOfTjeLFLmnGYeQX',
-        template_params: {
-          from_name: contactForm.from_name.value,
-          from_email: contactForm.from_email.value,
-          message: contactForm.message.value,
-          to_name: 'Kathy'
-        }
-      };
+     emailjs.send(
+  'service_2ys6e2j',
+  'template_k46um58',
+  {
+    from_name: contactForm.from_name.value,
+    from_email: contactForm.from_email.value,
+    message: contactForm.message.value,
+    to_name: 'Kathy'
+  },
+  'xyOfTjeLFLmnGYeQX'
+)
+.then(function() {
+  formSuccess.classList.remove('hidden');
+  contactForm.reset();
+  lucide.createIcons();
+  setTimeout(function() { formSuccess.classList.add('hidden'); }, 6000);
+})
+.catch(function(err) {
+  console.log('Send error:', err);
+  formError.classList.remove('hidden');
+  setTimeout(function() { formError.classList.add('hidden'); }, 6000);
+});
 
-      fetch('https://api.emailjs.com/api/v1.0/email/send', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      })
+     
+      
       .then(function(response) { return response.json(); })
       .then(function(result) {
         console.log('EmailJS result:', result);
